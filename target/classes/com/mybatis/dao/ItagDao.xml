@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatis.dao.ItagDao">
+    <select id="findTagBySubfield" resultType="tag" parameterType="String">
+    select tagName from tags
+	    where aticle in
+	    (select aid from aticles where subfield = (select sid from subfield where bloger = "A-001" and title = #{subfield}))
+    </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatis.dao.IaticleDao">
+    <!-- resultType:返回的数据封装到哪里去-->
+    <select id="findAticlesByPage" resultType="com.mybatis.domain.aticle" parameterType="int">
+        select * from aticles where bloger = "A-001" order by date limit #{page},10;
+    </select>
+<!--    查询文章总数-->
+    <select id="findTotal" resultType="int">
+        select count(aid) as total from aticles;
+    </select>
+<!--    查询推荐文章并排序-->
+    <select id="findReacommendAticles" resultType="com.mybatis.domain.aticle">
+        select aid,title,date,logo from aticles
+		where bloger = "A-001" and recommend is not null order by recommend ASC;
+    </select>
+<!--    .根据tagName拿到文章-->
+    <select id="findAticlesByTag" resultType="aticle" parameterType="String">
+        select * from aticles where aid in (select aticle from tags where tagName = #{tag});
+    </select>
+</mapper>
