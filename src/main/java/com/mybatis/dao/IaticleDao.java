@@ -11,6 +11,9 @@ public interface IaticleDao {
     int findTotal();
     //查询推荐文章
     List<aticle> findReacommendAticles();
-    //.根据tagName拿到文章
+    //根据tagName拿到文章
     List<aticle> findAticlesByTag(String tag);
+    //根据分栏title拿到该分栏的所有文章
+    List<aticle> findAticlesBySubTitle(String title);
+
 }

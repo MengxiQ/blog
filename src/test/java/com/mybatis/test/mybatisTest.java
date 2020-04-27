@@ -22,6 +22,7 @@ public class mybatisTest {
     private IblogerDao blogerDao;
     private IfieldLsitDao fieldLsitDao;
     private ItagDao tagDao;
+    private IsubfieldDao subfieldDao;
     private InputStream in;
 
     @Before
@@ -39,6 +40,7 @@ public class mybatisTest {
         blogerDao = session.getMapper(IblogerDao.class);
         fieldLsitDao = session.getMapper(IfieldLsitDao.class);
         tagDao = session.getMapper(ItagDao.class);
+        subfieldDao = session.getMapper(IsubfieldDao.class);
         //5.使用代理对象执行方法
     }
     @After
@@ -53,7 +55,8 @@ public class mybatisTest {
     public void testFindAticlesByPage(){
         List<aticle> aticles = aticleDao.findAticlesByPage(0);
         for (aticle aticle : aticles){
-            System.out.println(aticle);
+//            System.out.println(aticle);
+
         }
     }
     @Test
@@ -99,6 +102,26 @@ public class mybatisTest {
         List<tag> tags= tagDao.findTagBySubfield("VUE CLI");
         for (tag item : tags){
             System.out.println(item);
+        }
+    }
+    @Test
+    public void testFindTagByUid(){
+        List<tag> tags = tagDao.findTagByUid("A-001");
+        for (tag item : tags){
+            System.out.println(item);
+        }
+    }
+
+    @Test
+    public void testFindSubfieldByTitle(){
+        subfield subfield = subfieldDao.findSubfieldByTitle("VUE CLI");
+        System.out.println(subfield);
+    }
+    @Test
+    public void testFindAticlesBysubTitle(){
+        List<aticle> aticles = aticleDao.findAticlesBySubTitle("VUE CLI");
+        for (aticle aticle : aticles){
+            System.out.println(aticle);
         }
     }
 }

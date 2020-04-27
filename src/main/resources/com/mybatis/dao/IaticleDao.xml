@@ -16,8 +16,12 @@
         select aid,title,date,logo from aticles
 		where bloger = "A-001" and recommend is not null order by recommend ASC;
     </select>
-<!--    .根据tagName拿到文章-->
+<!--    根据tagName拿到文章-->
     <select id="findAticlesByTag" resultType="aticle" parameterType="String">
         select * from aticles where aid in (select aticle from tags where tagName = #{tag});
+    </select>
+<!--    根据分栏title拿到该分栏的所有文章-->
+    <select id="findAticlesBySubTitle" resultType="aticle" parameterType="String">
+        select * from aticles where subfield = (select sid from subfield where title = #{title} and bloger = "A-001")
     </select>
 </mapper>

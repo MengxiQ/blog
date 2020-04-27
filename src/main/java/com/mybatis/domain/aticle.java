@@ -69,14 +69,14 @@ public class aticle {
 
     @Override
     public String toString() {
-        return "aticle{" +
-                "aid='" + aid + '\'' +
-                ", src='" + src + '\'' +
-                ", title='" + title + '\'' +
-                ", date=" + date +
-                ", logo='" + logo + '\'' +
-                ", recommend='" + recommend + '\'' +
-                ", subfield='" + subfield + '\'' +
+        return "{" +
+                "\"aid\":\"" + aid + '\"' +
+                ",\"src\":\"" + src + '\"' +
+                ",\"title\":\"" + title + '\"' +
+                ",\"date\":\"" + date + '\"' +
+                ",\"logo=\":\"" + logo + '\"' +
+                ",\" recommend\":\"" + recommend + '\"' +
+                ",\"subfield\":\"" + subfield + '\"' +
                 '}';
     }
 }

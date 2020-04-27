@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<!--mybatis主配置文件 注意头部固定是如上！-->
+<configuration>
+    <!--    配置别名-->
+    <typeAliases>
+        <typeAlias type="com.mybatis.domain.aticle" alias="aticle"/>
+        <typeAlias type="com.mybatis.domain.blog" alias="blog"/>
+        <typeAlias type="com.mybatis.domain.bloger" alias="bloger"/>
+        <typeAlias type="com.mybatis.domain.subfield" alias="subfield" />
+        <typeAlias type="com.mybatis.domain.fieldList" alias="fieldList" />
+        <typeAlias type="com.mybatis.domain.tag" alias="tag" />
+    </typeAliases>
+    <!--    配置环境-->
+    <environments default="mysql">
+        <!--        配置mysql环境-->
+        <environment id="mysql">
+            <!--            配置事务类型-->
+            <transactionManager type="JDBC"/>
+            <!--            配置数据源，这里是连接池方式-->
+            <dataSource type="POOLED">
+                <!--                配置连接数据库的4个基本信息-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://192.168.100.129:3306/blog?serverTimezone=UTC"/>
+                <property name="username" value="blog"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        <mapper resource="com/mybatis/dao/IaticleDao.xml"/>-->
+        <package name="com.mybatis.dao"/>
+    </mappers>
+</configuration>

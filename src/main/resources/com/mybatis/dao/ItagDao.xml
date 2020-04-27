@@ -8,4 +8,9 @@
 	    where aticle in
 	    (select aid from aticles where subfield = (select sid from subfield where bloger = "A-001" and title = #{subfield}))
     </select>
+    <select id="findTagByUid" resultType="tag" parameterType="String">
+    select tagName from tags
+	where aticle in
+	(select aid from aticles where subfield = (select sid from subfield where bloger = #{uid}))
+    </select>
 </mapper>
